@@ -172,3 +172,57 @@ footer {
 
 
 
+/*REGION NAPIT*/
+
+#region-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* skaalautuva */
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    max-width: 650px; /* rajoittaa koko gridin leveyden */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.region-btn {
+    padding: 12px 25px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Hover efekti */
+.region-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
+/* Media query pienemmille näytöille */
+@media (max-width: 600px) {
+    #region-buttons {
+        grid-template-columns: repeat(2, 1fr); /* pienemmällä näytöllä kaksi saraketta */
+    }
+}
+@media (max-width: 500px) {
+    .pokemon-card {
+        width: 45%; /* kaksi korttia per rivi */
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+
