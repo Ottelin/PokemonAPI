@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="indexstyle.css">
+</head>
+<body>
+    <header>
+        Pokédex – Web-sovellus
+    </header>
+
+    <nav>
+        <a href="index.html">Etusivu</a>
+        <a href="pokemonlist.html">Pokemon-lista</a>
+        <a href="about.html">Tietoja</a>
+    </nav>
+
+    <main>
+        <h2>Pokemon-lista</h2>
+        <div id="region-buttons"></div> <!-- nappipalkki -->
+        <div id="pokemon-list"></div>   <!-- listaus näkyy tässä -->
+    </main>
+
+    <footer>
+        Tämä on Pokédex-esimerkkisovellus – luotu oppimistarkoitukseen.
+    </footer>
+
+    <!-- LINKITYS JAVASCRIPTIIN -->
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

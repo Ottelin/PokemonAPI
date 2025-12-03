@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+}
+header {
+    background: #ef5350;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+nav {
+    background: #d32f2f;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+main {
+    padding: 20px;
+}
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+#welcome-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+#searchBox {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 0 auto 25px auto;
+    display: block;
+}
+#results {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.pokemon-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.pokemon-card img {
+    width: 120px;
+    height: 120px;
+}
+
+/*ANIMOINTI*/
+
+/* Loader pyörivä ympyrä */
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #ef5350;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/*POKEMONLIST CSS ALLA*/
+
+.region-title {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.region-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.region-title {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.region-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #ef5350;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.pokemon-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.pokemon-card img {
+    width: 96px;
+    height: 96px;
+}
+
+/*REGION LISTAUS*/
+/* --- Region-napit --- */
+#region-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.region-btn {
+    padding: 10px 15px;
+    background: #ef5350;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.region-btn:hover {
+    background: #d32f2f;
+}
+
+/* Pokemon-lista container ja kortit */
+#region-buttons + #pokemon-list,
+.region-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Pienempi hover-animaatio korteille */
+.pokemon-card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s;
+}
+
+/* Region-title */
+.region-title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
