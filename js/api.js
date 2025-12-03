@@ -20,14 +20,14 @@ export async function searchPokemon() {
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         if (!res.ok) {
-            results.innerHTML = errorCard(`Ei löydy hakusanalla: ${name}`);
+            results.innerHTML = errorCard(`Oops! No results found for: ${name}`);
             return;
         }
 
         const p = await res.json();
         results.innerHTML = pokemonCard(p);
     } catch (err) {
-        results.innerHTML = errorCard("Virhe haussa.");
+        results.innerHTML = errorCard("Error.");
     }
 }
 
@@ -45,7 +45,7 @@ export async function loadList(startId) {
             const p = await r.json();
             cards += pokemonCard(p);
         } catch (err) {
-            cards += errorCard(`Virhe Pokémonissa #${i}`);
+            cards += errorCard(`Pokémon error #${i}`);
         }
     }
 
@@ -53,4 +53,6 @@ export async function loadList(startId) {
 }
 
 
-
+//HUOM!
+// Pokemoneja haettaessa IDllä niin hakee väärin pokemoneja
+// esim 1 on bulbasaur mutta hakee muitakin nro 1 idllä
