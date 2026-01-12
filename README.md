@@ -1,4 +1,4 @@
-Pokédex – Web Application
+PokéLibrary – Web Application
 
 A web-based Pokédex that fetches and displays Pokémon details from the PokéAPI.
 Built with:
