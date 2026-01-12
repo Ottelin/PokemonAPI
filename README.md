@@ -6,7 +6,7 @@ Built with:
 
 DESCRIPTION:
 
-PokéLibary is a simple web application that fetches Pokémon information from the PokéAPI. 
+PokéLibrary is a simple web application that fetches Pokémon information from the PokéAPI. 
 User can:
 - Search for a Pokémon by name or ID number.
 - View Pokémon details such as name, ID, type and region (Kanto, Johto, Hoenn..).
