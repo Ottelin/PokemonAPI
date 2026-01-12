@@ -1,12 +1,15 @@
-POKÉDEX – WEB APPLICATION
+Pokédex – Web Application
 
-Visual interface showing Pokémon details fetched from the API. 
-Made in Visual Studio code and HTML+CSS+JS.
+A web-based Pokédex that fetches and displays Pokémon details from the PokéAPI.
+Built with:
+- HTML, CSS, and JavaScript in Visual Studio Code.
 
-Description:
-- PokéLibary is a simple web application that fetches Pokémon information from the PokéAPI. Users can:
-- Search for a Pokémon by name or ID.
-- View Pokémon details such as name, ID, and types.
-- See search results displayed as visually appealing cards.
+DESCRIPTION:
+
+PokéLibary is a simple web application that fetches Pokémon information from the PokéAPI. 
+User can:
+- Search for a Pokémon by name or ID number.
+- View Pokémon details such as name, ID, type and region (Kanto, Johto, Hoenn..).
+- Results are displayed as simple cards with hover effects and glow.
 
 This project is built for own learning purposes.
