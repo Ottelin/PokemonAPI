@@ -1,8 +1,22 @@
-body {
+/* -------------------- BODY & LAYOUT -------------------- */
+html, body {
+    height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f0f0f0;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: 
+        linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+        url('../images/pokeball.jpeg') no-repeat center center;
+    background-size: 70% 70%;
+    background-attachment: fixed;
+}
+
+/* -------------------- HEADER -------------------- */
 header {
     background: #ef5350;
     color: white;
@@ -10,6 +24,8 @@ header {
     text-align: center;
     font-size: 40px;
 }
+
+/* -------------------- NAV -------------------- */
 nav {
     background: black;
     padding: 20px;
@@ -18,41 +34,24 @@ nav {
     gap: 50px;
     font-size: 20px;
 }
+
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
+
 nav a:hover {
     text-decoration: underline;
 }
+
+/* -------------------- MAIN -------------------- */
 main {
-    flex: 1; /* täyttää jäljellä olevan tilan */
+    flex: 1;
     padding: 20px;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-
-    /* Taustakuva valkoisen häivytyksen kanssa */
-    background: 
-        linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
-        url('../images/pokeball.jpeg') no-repeat center center;
-    background-size: 70% 70%;
-    background-attachment: fixed; /* kuva pysyy paikallaan skrollatessa */
-}
-
-
-
+/* -------------------- FOOTER -------------------- */
 footer {
     width: 100%;
     background: black;
@@ -63,6 +62,7 @@ footer {
     font-size: 20px;
 }
 
+/* -------------------- WELCOME BOX -------------------- */
 #welcome-box {
     background: white;
     padding: 50px;
@@ -74,31 +74,32 @@ footer {
     box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
+/* -------------------- SEARCH BOX -------------------- */
 #searchBox {
     width: 100%;
     max-width: 400px;
-    padding: 12px 20px;              /* hieman enemmän sisäistä tilaa */
-    font-size: 1.1rem;               /* isompi ja modernimpi fontti */
-    margin: 20px auto;               /* keskitetty ja hieman tilaa ylä- ja alapuolelle */
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    margin: 20px auto;
     display: block;
-    border: 2px solid #8b8a8a;          /* pehmeä harmaa reunus */
-    border-radius: 25px;             /* pyöristetyt reunat */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* kevyt varjo */
-    outline: none;                   /* poistaa oletuskehysten tyylin */
-    transition: all 0.3s ease;       /* sujuva hover-animaatio */
+    border: 2px solid #8b8a8a;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    outline: none;
+    transition: all 0.3s ease;
 }
 
 #searchBox:focus {
     border-color: #ef5350;
     box-shadow: 0 4px 12px rgba(239,83,80,0.3);
 }
+
 #searchBox::placeholder {
     color: #aaa;
     font-style: italic;
 }
 
-
-
+/* -------------------- RESULTS GRID -------------------- */
 #results {
     display: flex;
     justify-content: center;
@@ -107,40 +108,52 @@ footer {
     padding: 20px 0;
 }
 
-/* Pokemon-kortit */
+/* -------------------- POKEMON GRID -------------------- */
+#pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(10, 120px); /* 10 korttia per rivi */
+    gap: 70px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* -------------------- POKEMON CARD -------------------- */
 .pokemon-card {
-    background: white;
-    padding: 15px;
-    border-radius: 15px; /* hieman pyöristetympi */
-    width: 200px;
+    width: 120px;
+    background-color: #f8f8f8;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 8px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* syvempi varjo */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover-efekti: nousee ja varjo kasvaa */
+/* Hover: kohoaminen ja glow */
 .pokemon-card:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 20px 8px rgba(33, 178, 235, 0.8);
 }
 
-/* Kuva animaatiolla */
+/* Pokemon image hover */
 .pokemon-card img {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* pyöreä kuva moderni efekti */
+    border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
 .pokemon-card img:hover {
-    transform: rotate(10deg) scale(1.1); /* pieni pyörähdys hoverilla */
+    transform: rotate(10deg) scale(1.1);
 }
 
-/* Nimi ja ID tyylitetty */
+/* Pokemon name & type */
 .pokemon-card h3 {
-    margin: 10px 0 5px 0;
-    font-size: 1.2rem;
+    font-size: 14px;
+    margin: 5px 0;
+    word-wrap: break-word;
+    word-break: break-word;
     color: black;
     text-transform: uppercase;
 }
@@ -151,10 +164,7 @@ footer {
     color: #555;
 }
 
-
-
-/*ANIMOINTI*/
-/* Loader pyörivä ympyrä */
+/* -------------------- LOADER -------------------- */
 .loader {
     border: 6px solid #f3f3f3;
     border-top: 6px solid #ef5350;
@@ -170,19 +180,14 @@ footer {
     100% { transform: rotate(360deg); }
 }
 
-
-
-/*REGION NAPIT*/
-
+/* -------------------- REGION BUTTONS -------------------- */
 #region-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* skaalautuva */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
     justify-content: center;
-    margin: 20px 0;
-    max-width: 650px; /* rajoittaa koko gridin leveyden */
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
+    max-width: 650px;
 }
 
 .region-btn {
@@ -200,28 +205,25 @@ footer {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Hover efekti */
 .region-btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-
-/* Media query pienemmille näytöille */
+/* -------------------- MEDIA QUERIES -------------------- */
 @media (max-width: 600px) {
     #region-buttons {
-        grid-template-columns: repeat(2, 1fr); /* pienemmällä näytöllä kaksi saraketta */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    body {
+        background-attachment: scroll;
     }
 }
+
 @media (max-width: 500px) {
     .pokemon-card {
         width: 45%; /* kaksi korttia per rivi */
-    }
-}
-
-@media (max-width: 600px) {
-    body {
-        background-attachment: scroll;
     }
 }
 
