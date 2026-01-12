@@ -1,10 +1,12 @@
-
+import { regions } from './regions.js';
 import { pokemonCard, showLoader, errorCard } from './ui.js';
 
+// -------------------- HAKU --------------------
 export async function searchPokemon() {
     const searchBox = document.getElementById("searchBox");
     const results = document.getElementById("results");
-    if (!searchBox || !results) return;
+
+    if (!searchBox || !results) return; // turvallisuus, jos elementtiä ei ole
 
     const query = searchBox.value.toLowerCase().trim();
     if (!query) {
@@ -12,15 +14,12 @@ export async function searchPokemon() {
         return;
     }
 
-    
-
     showLoader(results);
 
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
-
         if (!res.ok) {
-            results.innerHTML = errorCard(`No Pokémon found for "${query}"`);
+            results.innerHTML = errorCard(`Oh no! Pokémon not found for "${query}"`);
             return;
         }
 
@@ -28,31 +27,58 @@ export async function searchPokemon() {
         results.innerHTML = pokemonCard(p);
 
     } catch (err) {
-        results.innerHTML = errorCard("Error.");
+        results.innerHTML = errorCard("Error fetching Pokémon.");
+    }
+}
+
+// -------------------- ALUELISTAUS --------------------
+export async function loadRegion(regionName) {
+    const list = document.getElementById("pokemon-list");
+    if (!list) return;
+
+    const cleanName = regionName.trim();
+    const region = regions[cleanName];
+
+    if (!region) {
+        list.innerHTML = errorCard(`Oh no! Region not found: ${cleanName}`);
+        return;
+    }
+
+    showLoader(list);
+
+    const startId = region.start;
+    const endId = region.end;
+    const fetchPromises = [];
+
+    // Luodaan kaikki fetch-promiseet
+    for (let i = startId; i <= endId; i++) {
+        const promise = fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            .then(res => res.ok ? res.json() : null)
+            .catch(() => null);
+        fetchPromises.push(promise);
+    }
+
+    try {
+        const results = await Promise.all(fetchPromises);
+        let html = "";
+
+        results.forEach((p, index) => {
+            if (p) {
+                html += pokemonCard(p);
+            } else {
+                html += errorCard(`Pokémon error #${startId + index}`);
+            }
+        });
+
+        list.innerHTML = html;
+
+    } catch (err) {
+        list.innerHTML = errorCard("Error fetching Pokémon.");
     }
 }
 
 
-export async function loadList(startId) {
-    const results = document.getElementById("results");
-    if (!results) return;
 
-    showLoader(results);
-    let cards = "";
-
-    for (let i = startId; i < startId + 20; i++) {
-        try {
-            const r = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
-            if (!r.ok) continue;
-            const p = await r.json();
-            cards += pokemonCard(p);
-        } catch (err) {
-            cards += errorCard(`Pokémon error #${i}`);
-        }
-    }
-
-    results.innerHTML = cards;
-}
 
 
 
