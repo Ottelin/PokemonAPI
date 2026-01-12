@@ -1,3 +1,4 @@
+
 import { pokemonCard, showLoader, errorCard } from './ui.js';
 
 export async function searchPokemon() {
@@ -5,31 +6,32 @@ export async function searchPokemon() {
     const results = document.getElementById("results");
     if (!searchBox || !results) return;
 
-    const name = searchBox.value.toLowerCase().trim();
-    if (!name) {
+    const query = searchBox.value.toLowerCase().trim();
+    if (!query) {
         results.innerHTML = "";
         return;
     }
 
+    
+
     showLoader(results);
 
-    if (!isNaN(name)) {
-        return loadList(Number(name));
-    }
-
     try {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+
         if (!res.ok) {
-            results.innerHTML = errorCard(`Oops! No results found for: ${name}`);
+            results.innerHTML = errorCard(`No Pokémon found for "${query}"`);
             return;
         }
 
         const p = await res.json();
         results.innerHTML = pokemonCard(p);
+
     } catch (err) {
         results.innerHTML = errorCard("Error.");
     }
 }
+
 
 export async function loadList(startId) {
     const results = document.getElementById("results");
@@ -51,8 +53,3 @@ export async function loadList(startId) {
 
     results.innerHTML = cards;
 }
-
-
-//HUOM!
-// Pokemoneja haettaessa IDllä niin hakee väärin pokemoneja
-// esim 1 on bulbasaur mutta hakee muitakin nro 1 idllä
